@@ -96,6 +96,11 @@ class php {
 
   package { 'boxen/brews/bisonphp26':
     ensure => '2.6.4-boxen1',
+    notify => Exec['link bison']
+  }
+
+  exec { 'link bison':
+    command => "${::homebrew_root}/bin/brew link bisonphp26 --force"
   }
 
   # Install dupe version of zlib as tapping homebrew dupes appears to have
